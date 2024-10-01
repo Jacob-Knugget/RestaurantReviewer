@@ -36,14 +36,14 @@ namespace RestaurantReviewer.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageData")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double?>("Rating")
                         .HasColumnType("float");
-
-                    b.Property<byte[]>("RestaurantPicture")
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");

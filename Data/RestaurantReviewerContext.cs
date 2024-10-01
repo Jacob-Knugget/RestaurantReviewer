@@ -14,6 +14,6 @@ namespace RestaurantReviewer.Data
         {
         }
 
-        public DbSet<RestaurantReviewer.Models.Restaurants> Restaurants { get; set; } = default!;
+        public DbSet<Restaurants> Restaurants { get; set; } = default!;
     }
 }

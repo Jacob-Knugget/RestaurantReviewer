@@ -14,6 +14,9 @@ namespace RestaurantReviewer.Pages.Jacob
     {
         private readonly RestaurantReviewer.Data.RestaurantReviewerContext _context;
 
+        [BindProperty]
+        public Restaurants? ImageData { get; set; }
+
         public CreateModel(RestaurantReviewer.Data.RestaurantReviewerContext context)
         {
             _context = context;
@@ -31,12 +34,26 @@ namespace RestaurantReviewer.Pages.Jacob
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Restaurants == null || Restaurants == null)
+            if (!ModelState.IsValid || _context.Restaurants == null || Restaurants == null)
             {
                 return Page();
             }
 
-            _context.Restaurants.Add(Restaurants);
+            byte[] bytes = null;
+
+            if (ImageData.ImageFile != null)
+            {
+                using (Stream fs = ImageData.ImageFile.OpenReadStream())
+                {
+                    using (BinaryReader br = new BinaryReader(fs))
+                    {
+                        bytes = br.ReadBytes((Int32)fs.Length);
+                    }
+                }
+                ImageData.ImageData = Convert.ToBase64String(bytes, 0, bytes.Length);
+            }
+
+            _context.Restaurants.Add(ImageData);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

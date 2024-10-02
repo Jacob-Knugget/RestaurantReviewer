@@ -19,7 +19,7 @@ namespace RestaurantReviewer.Pages.Sakura
             _context = context;
         }
 
-      public Restaurants Restaurants { get; set; } = default!; 
+        public Restaurants Restaurants { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

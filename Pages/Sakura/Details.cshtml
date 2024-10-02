@@ -2,54 +2,109 @@
 @model RestaurantReviewer.Pages.Sakura.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = @Html.DisplayFor(model => model.Restaurants.Name);
 }
 
-<h1>Details</h1>
+@{
+    var img = Model.Restaurants.Name + ".jpg";
+}
 
-<div>
-    <h4>Restaurants</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Restaurants.RestaurantPicture)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Restaurants.RestaurantPicture)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Restaurants.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Restaurants.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Restaurants.Rating)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Restaurants.Rating)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Restaurants.Type)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Restaurants.Type)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Restaurants.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Restaurants.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Restaurants.Cost)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Restaurants.Cost)
-        </dd>
-    </dl>
+<h1 style="margin-top: 5rem;">@Html.DisplayFor(model => model.Restaurants.Name)</h1>
+<p class="mb-0">
+    @{
+        int rating = Convert.ToInt32(Model.Restaurants.Rating);
+        for (int i = 0; i < rating; i++)
+        {
+            <span style="font-size: 2rem; color: gold; -webkit-text-stroke: 1px black;">&#9733;</span>
+        }
+    }
+</p>
+<p style="font-size: 1rem; font-family: Georgia, 'Times New Roman', sans-serif;">(50 reviews)</p>
+<img src="~/images/@img" style="width: 350px;" />
+<p class="mt-5">
+    <span class="me-5">&#x1FA99;@Html.DisplayFor(model => model.Restaurants.Cost)</span>
+    <span>&#127860;@Html.DisplayFor(model => model.Restaurants.Type)</span>
+</p>
+<hr />
+
+<div class="row mt-5">
+    <h2>About</h2>
+    <p class="my-3 txt">@Html.DisplayFor(model => model.Restaurants.Description)</p>
+    <div class="col-6 mt-3">
+        <h3>MENU</h3>
+        <p class="txt">Coming Soon...</p>
+    </div>
+    <div class="col-6 mt-3">
+        <h3>HOURS</h3>
+        <div class="row txt">
+            <div class="text-start col-3 offset-3">
+                <p>Monday</p>
+                <p>Tuesday</p>
+                <p>Wednesday</p>
+                <p>Thursday</p>
+                <p>Friday</p>
+                <p>Saturday</p>
+                <p>Sunday</p>
+            </div>
+            <div class="text-start col-6">
+                @{
+                    for (int i = 0; i < 7; i++)
+                    {
+                        <p>11:00 a.m. - 08:00 p.m.</p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Restaurants?.ID">Edit</a> |
+<hr />
+
+<div class="mt-5">
+    <h3>Reviews</h3>
+    <table class="table txt offset-3">
+        @{
+            for (int i = 1; i <= 3; i++)
+            {
+                <tr>
+                    <td href="#" class="btn btn-outline-dark">User @i</td>
+                    <td class="text-start">Coming Soon...(Review @i)</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+
+<div class="mt-5 bg-dark">
+    <span class="me-5">
+        <a href="#" class="me-3">Log in</a>
+        <a href="#" class="me-3">Sign up</a>
+        <a href="#">Share&#11189;</a>
+    </span>
+    <a asp-page="./Edit" asp-route-id="@Model.Restaurants?.ID" class="me-3">Edit</a>
     <a asp-page="./Index">Back to List</a>
 </div>
+
+<style>
+    body {
+        font-family: fantasy;
+        background-color: #F2F0EB;
+    }
+    main {
+        font-size: 1.25rem;
+        text-align: center;
+    }
+    a {
+        color: black;
+    }
+    main a {
+        color: white;
+        text-decoration: none;
+    }
+    a:hover {
+        color: red;
+    }
+    .txt {
+        font-family: Georgia;
+        font-size: 1.15rem;
+    }
+</style>

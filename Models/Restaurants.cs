@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RestaurantReviewer.Models
 {

@@ -2,14 +2,32 @@
 @model RestaurantReviewer.Pages.Sakura.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Restaurant Reviewer";
 }
 
-<h1>Index</h1>
+<div class="row">
+    <form class="mt-5" style="">
+        <p class="mt-5">
+            <input type="text" asp-for="SearchString" placeholder=" Search Restaurant Name..." class="col-5" />
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+            <label asp-for="RestaurantType" class="ms-3">Filter by Category: </label>
+            <select asp-for="RestaurantType" asp-items="Model.Types" class="px-2">
+                <option value="">All</option>
+            </select>
+
+            <a asp-page="./Index" asp-route-sortOrder="desc" class="ms-3">Sort by Rating</a>
+
+            <span style="float: right;">
+                <a href="#" class="btn btn-dark me-1">Log in</a>
+                <a href="#" class="btn btn-dark">Sign up</a>
+            </span>
+        </p>
+        <p class="text-center mb-5">
+            <input type="submit" value="Search" class="me-5" />
+            <a asp-page="./Index" class="btn btn-secondary">Clear</a>
+        </p>
+    </form>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -38,7 +56,26 @@
 @foreach (var item in Model.Restaurants) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.RestaurantPicture)
+                @{
+                    switch (item.Name)
+                    {
+                        case "Five Guys":
+                            <img src="~/images/Five Guys.JPG" />
+                            break;
+                        case "Casa Bonita":
+                            <img src="~/images/Casa Bonita.jpg" />
+                            break;
+                        case "La Senorita":
+                            <img src="~/images/La Senorita.jpg" />
+                            break;
+                        case "Fuji Sushi Steakhouse":
+                            <img src="~/images/Fuji Sushi Steakhouse.jpg" />
+                            break;
+                        case "Olive Garden Italian Restaurant":
+                            <img src="~/images/Olive Garden Italian Restaurant.jpg" />
+                            break;
+                    }
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -64,3 +101,31 @@
 }
     </tbody>
 </table>
+<a asp-page="Create" style="float: right; font-size: 1rem;">Create New</a>
+<div class="text-center" style="clear: both;">
+    <a href="#" class="btn btn-outline-secondary me-5">Prev</a>
+    1
+    <a href="#" class="btn btn-outline-secondary ms-5">Next</a><br />
+</div>
+<style>
+    body {
+        font-family: fantasy;
+        background-color: #F2F0EB;
+    }
+    main {
+        font-size: 1.25rem;
+    }
+    a {
+        color: black;
+    }
+    a:hover {
+        color: red;
+    }
+    img {
+        width: 250px;
+    }
+    td {
+        font-family: Georgia;
+        font-size: 1.15rem;
+    }
+</style>

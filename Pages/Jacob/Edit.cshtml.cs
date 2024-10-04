@@ -23,9 +23,6 @@ namespace RestaurantReviewer.Pages.Jacob
         [BindProperty]
         public Restaurants Restaurants { get; set; } = default!;
 
-        [BindProperty]
-        public Restaurants? ImageData { get; set; }
-
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null || _context.Restaurants == null)
@@ -67,20 +64,6 @@ namespace RestaurantReviewer.Pages.Jacob
                 {
                     throw;
                 }
-            }
-
-            byte[] bytes = null;
-
-            if (ImageData.ImageFile != null)
-            {
-                using (Stream fs = ImageData.ImageFile.OpenReadStream())
-                {
-                    using (BinaryReader br = new BinaryReader(fs))
-                    {
-                        bytes = br.ReadBytes((Int32)fs.Length);
-                    }
-                }
-                ImageData.ImageData = Convert.ToBase64String(bytes, 0, bytes.Length);
             }
 
             return RedirectToPage("./Index");

@@ -4,6 +4,25 @@
 @{
     ViewData["Title"] = "Index";
 }
+
+<style>
+    body{
+        background-color:saddlebrown;
+    }
+    a {
+		color: white;
+		text-decoration: none;
+    }
+    a:hover {
+        color: saddlebrown;
+    }
+    #rSort:hover {
+        background-color: grey;
+        padding: 5px;
+        color: white;
+    }
+
+</style>
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -11,13 +30,13 @@
 <i class="material-icons" style="color:white; font-size:40px; float:left;">menu</i>
 
 <form>
-    <select style="float:left;" asp-for="RestaurantType" asp-items="Model.Types">
-        <options value="">All</options>
+    <select style="float:left; margin:12px;" asp-for="RestaurantType" asp-items="Model.Types">
     </select>
     <p style="float:right;">
         <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
+        <input class="btn btn-secondary m-3" type="submit" value="Filter" />
+        <a asp-page="./Index" class="btn btn-secondary m-3">Clear</a>
+	</p>
 </form>
 <div class="bg-dark">
 	<h1 style="text-align:center; color:white;" class="p-5">Top Restaurants Today!</h1>
@@ -29,7 +48,7 @@
                 @Html.DisplayNameFor(model => model.Restaurants[0].Name)
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.RatingSort">@Html.DisplayNameFor(model => model.Restaurants[0].Rating)</a>
+				<a id="rSort" asp-page="./Index" asp-route-sortOrder="@Model.RatingSort">@Html.DisplayNameFor(model => model.Restaurants[0].Rating)</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Restaurants[0].Type)
@@ -73,5 +92,5 @@
 </table>
 
 <p>
-    <a style="color:white;" asp-page="Create">Add Review</a>
+    <a style="background-color:grey; padding:10px; border-radius:8px;" asp-page="Create">Add Review</a>
 </p>

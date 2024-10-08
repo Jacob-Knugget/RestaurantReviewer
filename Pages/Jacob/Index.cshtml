@@ -4,23 +4,32 @@
 @{
     ViewData["Title"] = "Index";
 }
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
 
-<h1>Index</h1>
+<i class="material-icons" style="color:white; font-size:40px; float:left;">menu</i>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
+<form>
+    <select style="float:left;" asp-for="RestaurantType" asp-items="Model.Types">
+        <options value="">All</options>
+    </select>
+    <p style="float:right;">
+        <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<div class="bg-dark">
+	<h1 style="text-align:center; color:white;" class="p-5">Top Restaurants Today!</h1>
+</div>
+<table class="table bg-dark text-light">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurants[0].RestaurantPicture)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Restaurants[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Restaurants[0].Rating)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.RatingSort">@Html.DisplayNameFor(model => model.Restaurants[0].Rating)</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Restaurants[0].Type)
@@ -35,32 +44,34 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Restaurants) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestaurantPicture)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cost)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Restaurants)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cost)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<p>
+    <a style="color:white;" asp-page="Create">Add Review</a>
+</p>

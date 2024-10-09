@@ -57,24 +57,8 @@
         <tr>
             <td>
                 @{
-                    switch (item.Name)
-                    {
-                        case "Five Guys":
-                            <img src="~/images/Five Guys.JPG" />
-                            break;
-                        case "Casa Bonita":
-                            <img src="~/images/Casa Bonita.jpg" />
-                            break;
-                        case "La Senorita":
-                            <img src="~/images/La Senorita.jpg" />
-                            break;
-                        case "Fuji Sushi Steakhouse":
-                            <img src="~/images/Fuji Sushi Steakhouse.jpg" />
-                            break;
-                        case "Olive Garden Italian Restaurant":
-                            <img src="~/images/Olive Garden Italian Restaurant.jpg" />
-                            break;
-                    }
+                    var img = @item.Name + ".jpg";
+                    <img src="~/images/@img" />
                 }
             </td>
             <td>

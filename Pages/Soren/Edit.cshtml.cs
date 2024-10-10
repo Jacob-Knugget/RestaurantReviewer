@@ -30,7 +30,7 @@ namespace RestaurantReviewer.Pages.Soren
                 return NotFound();
             }
 
-            var restaurants =  await _context.Restaurants.FirstOrDefaultAsync(m => m.ID == id);
+            var restaurants = await _context.Restaurants.FirstOrDefaultAsync(m => m.ID == id);
             if (restaurants == null)
             {
                 return NotFound();
@@ -71,7 +71,7 @@ namespace RestaurantReviewer.Pages.Soren
 
         private bool RestaurantsExists(int id)
         {
-          return (_context.Restaurants?.Any(e => e.ID == id)).GetValueOrDefault();
+            return (_context.Restaurants?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

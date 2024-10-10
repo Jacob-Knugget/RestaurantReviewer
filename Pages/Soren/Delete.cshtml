@@ -49,10 +49,10 @@
             @Html.DisplayFor(model => model.Restaurants.Cost)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Restaurants.ID" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn" style="background-color: orange; color: white; padding: 5px 10px; border: none; border-radius: 5px;" /> |
+        <a asp-page="./Index" style="background-color: white; color: orange; padding: 5px 10px; border: 2px solid orange; border-radius: 5px; text-decoration: none;">Back to List</a>
     </form>
 </div>

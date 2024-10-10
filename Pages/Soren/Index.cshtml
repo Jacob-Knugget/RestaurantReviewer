@@ -7,60 +7,60 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+<p></p><p></p>
+
+<form method="get">
+    <p>
+        Search by name:
+        <input type="text" asp-for="SearchString" style="border: 2px solid orange; border-radius: 5px; padding: 5px;" />
+        <input type="submit" value="Search" style="background-color: orange; color: white; padding: 5px 10px; border: none; border-radius: 5px;" />
+    </p>
+</form>
+
+<div>
+    <form method="get">
+        <input type="hidden" asp-for="SearchString" />
+        <button type="submit" name="sortOrder" value="TitleAsc" style="color: orange; margin-right: 10px;">Sort By Ascending</button>
+        <button type="submit" name="sortOrder" value="TitleDesc" style="color: orange;">Sort by Descending</button>
+    </form>
+</div>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurants[0].RestaurantPicture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurants[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurants[0].Rating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurants[0].Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurants[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurants[0].Cost)
-            </th>
+            <th>@Html.DisplayNameFor(model => model.Restaurants[0].RestaurantPicture)</th>
+            <th>@Html.DisplayNameFor(model => model.Restaurants[0].Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Restaurants[0].Rating)</th>
+            <th>@Html.DisplayNameFor(model => model.Restaurants[0].Type)</th>
+            <th>@Html.DisplayNameFor(model => model.Restaurants[0].Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Restaurants[0].Cost)</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Restaurants) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestaurantPicture)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cost)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Restaurants)
+
+
+
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.RestaurantPicture)</td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Rating)</td>
+                <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.Cost)</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" style="color: orange;">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID" style="color: orange;">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID" style="color: orange;">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
+
 </table>
+
+<p>
+    <a asp-page="Create" style="background-color: white; color: orange; padding: 5px 10px; border: 2px solid orange; border-radius: 5px; text-decoration: none;">Create New</a>
+</p>

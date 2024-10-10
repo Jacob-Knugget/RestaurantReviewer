@@ -5,49 +5,52 @@
     ViewData["Title"] = "Details";
 }
 <style>
-    body{
-        background-color:saddlebrown;
+    body {
+        background-color: saddlebrown;
+    }
+
+    #container a {
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: grey;
+    }
+
+    #container a:hover {
+        color: sandybrown;
     }
 </style>
-<h1>Details</h1>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<div id="container">
+    <h1 class="text-light">Details</h1>
 
-<div class="p-5 text-light bg-dark">
-    <h4>Restaurants</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Restaurants.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Restaurants.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Restaurants.Rating)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Restaurants.Rating)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Restaurants.Type)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Restaurants.Type)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Restaurants.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Restaurants.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Restaurants.Cost)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Restaurants.Cost)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Restaurants?.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <div class="p-5 text-light bg-dark">
+        <div class="align-content-lg-stretch">
+            <h2 style="text-align:center;">@Html.DisplayFor(model => model.Restaurants.Name)</h2>
+            @{
+                var img = Model.Restaurants.Name + ".jpg";
+                <img style="float:left; padding:20px;" class="col-5 row-4" src="~/images/@img" />
+            }
+            <p style="float:right; padding:20px;" class="col-4 row-4">@Html.DisplayFor(model => model.Restaurants.Description)</p>
+            <h4 style="float:right; padding-top:20px; padding-left:20px;" class="col-4 row-4">@Html.DisplayNameFor(model => model.Restaurants.Cost)</h4>
+            <p style="float:right; padding-left:20px;" class="col-4 row-4">@Html.DisplayFor(model => model.Restaurants.Cost)</p>
+        </div>
+        <div style="text-align:center; float:left; margin-left:40%; padding:20px;" class="align-content-lg-stretch">
+            <h4>@Html.DisplayNameFor(model => model.Restaurants.Rating)</h4>
+            @{
+                decimal count = (decimal)Model.Restaurants.Rating;
+                for(int i = 0; i < Math.Round(count); i++)
+                {
+                    <i class="material-icons" style="color:yellow; font-size:40px;">star</i>
+                };
+            }
+        </div>
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Restaurants?.ID">Edit</a> |
+        <a class="" asp-page="./Index">Back to List</a>
+    </div>
 </div>

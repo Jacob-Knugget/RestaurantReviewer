@@ -5,52 +5,66 @@
     ViewData["Title"] = "Create";
 }
 <style>
-    body{
-        background-color:saddlebrown;
+    body {
+        background-color: saddlebrown;
+    }
+
+    #container a {
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: grey;
+    }
+
+    #container a:hover {
+        color: sandybrown;
     }
 </style>
-<h1>Create</h1>
+<div id="container">
+    <h1>Create</h1>
 
-<h4>Restaurants</h4>
-<hr />
-<div class="row p-5 text-light bg-dark">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Restaurants.Name" class="control-label"></label>
-                <input asp-for="Restaurants.Name" class="form-control" />
-                <span asp-validation-for="Restaurants.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Restaurants.Rating" class="control-label"></label>
-                <input asp-for="Restaurants.Rating" class="form-control" />
-                <span asp-validation-for="Restaurants.Rating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Restaurants.Type" class="control-label"></label>
-                <input asp-for="Restaurants.Type" class="form-control" />
-                <span asp-validation-for="Restaurants.Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Restaurants.Description" class="control-label"></label>
-                <input asp-for="Restaurants.Description" class="form-control" />
-                <span asp-validation-for="Restaurants.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Restaurants.Cost" class="control-label"></label>
-                <input asp-for="Restaurants.Cost" class="form-control" />
-                <span asp-validation-for="Restaurants.Cost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <h4>Restaurants</h4>
+    <hr />
+    <div class="row p-5 text-light bg-dark">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Restaurants.Name" class="control-label"></label>
+                    <input asp-for="Restaurants.Name" class="form-control" />
+                    <span asp-validation-for="Restaurants.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Restaurants.Rating" class="control-label"></label>
+                    <input asp-for="Restaurants.Rating" class="form-control" />
+                    <span asp-validation-for="Restaurants.Rating" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Restaurants.Type" class="control-label"></label>
+                    <input asp-for="Restaurants.Type" class="form-control" />
+                    <span asp-validation-for="Restaurants.Type" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Restaurants.Description" class="control-label"></label>
+                    <input asp-for="Restaurants.Description" class="form-control" />
+                    <span asp-validation-for="Restaurants.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Restaurants.Cost" class="control-label"></label>
+                    <input asp-for="Restaurants.Cost" class="form-control" />
+                    <span asp-validation-for="Restaurants.Cost" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
+    <div>
     <a asp-page="Index">Back to List</a>
+    </div>
 </div>
 
 @section Scripts {

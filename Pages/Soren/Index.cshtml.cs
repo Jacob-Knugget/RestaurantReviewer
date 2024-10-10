@@ -19,14 +19,42 @@ namespace RestaurantReviewer.Pages.Soren
             _context = context;
         }
 
-        public IList<Restaurants> Restaurants { get;set; } = default!;
+        public IList<Restaurants> Restaurants { get; set; } = default!;
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+        public string TitleSort { get; set; }
+        public string TypeSort { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder)
         {
-            if (_context.Restaurants != null)
+            TitleSort = string.IsNullOrEmpty(sortOrder) ? "TitleDesc" : "";
+            TypeSort = string.IsNullOrEmpty(sortOrder) ? "TypeDesc" : "TypeAsc";
+
+
+            var restaurants = from r in _context.Restaurants
+                              select r;
+            if (!string.IsNullOrEmpty(SearchString))
             {
-                Restaurants = await _context.Restaurants.ToListAsync();
+                restaurants = restaurants.Where(r => r.Name.Contains(SearchString));
             }
+            switch (sortOrder)
+            {
+                case "TitleDesc":
+                    restaurants = restaurants.OrderByDescending(r => r.Name);
+                    break;
+                case "TypeDesc":
+                    restaurants = restaurants.OrderByDescending(r => r.Type);
+                    break;
+                case "TypeAsc":
+                    restaurants = restaurants.OrderBy(r => r.Type);
+                    break;
+                default:
+                    restaurants = restaurants.OrderBy(r => r.Name);
+                    break;
+            }
+
+
+            Restaurants = await restaurants.ToListAsync();
         }
     }
 }

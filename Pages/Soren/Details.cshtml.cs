@@ -19,7 +19,7 @@ namespace RestaurantReviewer.Pages.Soren
             _context = context;
         }
 
-      public Restaurants Restaurants { get; set; } = default!; 
+        public Restaurants Restaurants { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -33,7 +33,7 @@ namespace RestaurantReviewer.Pages.Soren
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Restaurants = restaurants;
             }

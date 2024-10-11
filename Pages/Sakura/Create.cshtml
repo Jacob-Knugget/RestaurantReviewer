@@ -1,58 +1,63 @@
 ﻿@page
 @model RestaurantReviewer.Pages.Sakura.CreateModel
-
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add a Restaurant";
 }
 
-<h1>Create</h1>
-
-<h4>Restaurants</h4>
+<h1 class="mt-5">@ViewData["Title"]</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Restaurants.RestaurantPicture" class="control-label"></label>
-                <input asp-for="Restaurants.RestaurantPicture" class="form-control" />
-                <span asp-validation-for="Restaurants.RestaurantPicture" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Restaurants.Name" class="control-label"></label>
-                <input asp-for="Restaurants.Name" class="form-control" />
-                <span asp-validation-for="Restaurants.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Restaurants.Rating" class="control-label"></label>
-                <input asp-for="Restaurants.Rating" class="form-control" />
-                <span asp-validation-for="Restaurants.Rating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Restaurants.Type" class="control-label"></label>
-                <input asp-for="Restaurants.Type" class="form-control" />
-                <span asp-validation-for="Restaurants.Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Restaurants.Description" class="control-label"></label>
-                <input asp-for="Restaurants.Description" class="form-control" />
-                <span asp-validation-for="Restaurants.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Restaurants.Cost" class="control-label"></label>
-                <input asp-for="Restaurants.Cost" class="form-control" />
-                <span asp-validation-for="Restaurants.Cost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div class="row mt-5">
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group mb-4">
+            <span>Restaurant </span><label asp-for="Restaurants.Name" class="control-label"></label>
+            <input asp-for="Restaurants.Name" class="form-control" placeholder="McDonald's" style="font-size: 1em;" required />
+            <span asp-validation-for="Restaurants.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-4">
+            <label asp-for="Restaurants.Rating" class="control-label"></label><span> (1 - 5)</span>
+            <input asp-for="Restaurants.Rating" class="form-control" placeholder="3.3" style="font-size: 1em;" />
+            <span asp-validation-for="Restaurants.Rating" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-4">
+            <label asp-for="Restaurants.Type" class="control-label"></label><span> of Restaurant</span>
+            <input asp-for="Restaurants.Type" class="form-control" placeholder="Fast Food" style="font-size: 1em;" />
+            <span asp-validation-for="Restaurants.Type" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-4">
+            <label asp-for="Restaurants.Description" class="control-label"></label>
+            <textarea asp-for="Restaurants.Description" rows="8" class="form-control" placeholder="Write a description here..." style="font-size: 1em;"></textarea>
+            <span asp-validation-for="Restaurants.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-5">
+            <label asp-for="Restaurants.Cost" class="control-label"></label>
+            <input asp-for="Restaurants.Cost" class="form-control" placeholder="$1-$10" style="font-size: 1em;" />
+            <span asp-validation-for="Restaurants.Cost" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-outline-danger" />
+            <a asp-page="Index" class="float-end">Back to List</a>
+        </div>
+    </form>
 </div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
+<style>
+    body {
+        font-family: fantasy;
+        background-color: #F2F0EB;
+    }
+    main {
+        font-size: 1.25rem;
+    }
+    a {
+        color: black;
+    }
+    a:hover {
+        color: red;
+    }
+    .form-control {
+        font-family: Georgia;
+    }
+</style>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

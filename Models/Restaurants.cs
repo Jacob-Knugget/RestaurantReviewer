@@ -13,6 +13,6 @@ namespace RestaurantReviewer.Models
         public string? Description { get; set; }
         public string? Cost { get; set; }
         [NotMapped]
-        public List<string>? Reviews { get; set; } = new List<string>();
+        public string? Reviews { get; set; }
     }
 }

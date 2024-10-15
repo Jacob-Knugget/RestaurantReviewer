@@ -7,7 +7,7 @@
 
 <h1>Details</h1>
 
-<div>
+<div style="border:double orange 2px; border-radius:20px; box-shadow:2px 2px black; padding:20px;">
     <h4>Restaurants</h4>
     <hr />
     <dl class="row">
@@ -48,8 +48,9 @@
             @Html.DisplayFor(model => model.Restaurants.Cost)
         </dd>
     </dl>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Restaurants?.ID">Edit</a> |
+        <a asp-page="./Index">Back to List</a>
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Restaurants?.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+

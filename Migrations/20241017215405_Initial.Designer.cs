@@ -12,7 +12,7 @@ using RestaurantReviewer.Data;
 namespace RestaurantReviewer.Migrations
 {
     [DbContext(typeof(RestaurantReviewerContext))]
-    [Migration("20241015220241_Initial")]
+    [Migration("20241017215405_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,6 +46,9 @@ namespace RestaurantReviewer.Migrations
 
                     b.Property<byte[]>("RestaurantPicture")
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Reviews")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");

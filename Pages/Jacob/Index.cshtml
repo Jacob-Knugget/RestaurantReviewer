@@ -45,6 +45,9 @@
     <thead>
         <tr>
             <th>
+                Picture
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Restaurants[0].Name)
             </th>
             <th>
@@ -66,6 +69,12 @@
         @foreach (var item in Model.Restaurants)
         {
             <tr>
+                <td>
+                    @{
+                        var img = item.Name + ".jpg";
+                        <img src="~/images/@img" height="120px" width="120px"/>
+                    }
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>

@@ -20,7 +20,8 @@ namespace RestaurantReviewer.Migrations
                     Rating = table.Column<double>(type: "float", nullable: true),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Cost = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Cost = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Reviews = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

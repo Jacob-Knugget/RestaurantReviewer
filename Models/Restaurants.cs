@@ -12,7 +12,6 @@ namespace RestaurantReviewer.Models
         public string? Type { get; set; }
         public string? Description { get; set; }
         public string? Cost { get; set; }
-        [NotMapped]
         public string? Reviews { get; set; }
     }
 }

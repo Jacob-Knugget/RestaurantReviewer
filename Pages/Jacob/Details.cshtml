@@ -32,7 +32,7 @@
             <h2 style="text-align:center;">@Html.DisplayFor(model => model.Restaurants.Name)</h2>
             @{
                 var img = Model.Restaurants.Name + ".jpg";
-                <img style="float:left; padding:20px;" class="col-5 row-4" src="~/images/@img" />
+                <img style="float:left; padding:20px;" class="col-5 row-4" src="~/images/@img" height="360px" width="240px"/>
             }
             <p style="float:right; padding:20px;" class="col-4 row-4">@Html.DisplayFor(model => model.Restaurants.Description)</p>
             <h4 style="float:right; padding-top:20px; padding-left:20px;" class="col-4 row-4">@Html.DisplayNameFor(model => model.Restaurants.Cost)</h4>

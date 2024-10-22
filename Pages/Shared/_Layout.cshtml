@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RestaurantReviewer.styles.css" asp-append-version="true" />
+    <style>
+        .wrapper {
+            background-image: url('Images/background.jpg');
+            background-size: cover;
+        }
+        main {
+            background: palegoldenrod;
+            padding: 25px;
+            border-radius: 25px;
+            opacity: .85;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -42,9 +54,9 @@
             </div>
         </nav>
     </header>
-    <div style="background-image: url('Images/background.jpg'); background-size: cover;">
+    <div class="wrapper">
         <div class="container">
-            <main role="main" class="pb-3" style="background: palegoldenrod; padding: 25px; border-radius: 25px; opacity: .85;">
+            <main role="main" class="pb-3">
                 @RenderBody()
             </main>
         </div>

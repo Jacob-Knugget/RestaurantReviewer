@@ -19,8 +19,13 @@
         }
     }
 </p>
-<p style="font-size: 1rem; font-family: Georgia, 'Times New Roman', sans-serif;">(50 reviews)</p>
-<img src="~/images/@img" style="width: 350px;" />
+<p style="font-size: 1rem; font-family: Georgia, 'Times New Roman', sans-serif;">(@Html.DisplayFor(model => model.Restaurants.Rating) stars)</p>
+@{
+    if (Model.Restaurants.ID <= 5)
+    {
+        <img src="~/images/@img" style="width: 350px;" />
+    }
+}
 <p class="mt-5">
     <span class="me-5">&#x1FA99;@Html.DisplayFor(model => model.Restaurants.Cost)</span>
     <span>&#127860;@Html.DisplayFor(model => model.Restaurants.Type)</span>
@@ -36,40 +41,41 @@
     </div>
     <div class="col-6 mt-3">
         <h3>HOURS</h3>
-        <div class="row txt">
-            <div class="text-start col-3 offset-3">
-                <p>Monday</p>
-                <p>Tuesday</p>
-                <p>Wednesday</p>
-                <p>Thursday</p>
-                <p>Friday</p>
-                <p>Saturday</p>
-                <p>Sunday</p>
-            </div>
-            <div class="text-start col-6">
-                @{
-                    for (int i = 0; i < 7; i++)
-                    {
-                        <p>11:00 a.m. - 08:00 p.m.</p>
-                    }
-                }
-            </div>
-        </div>
+        <p class="txt">Coming Soon...</p>
     </div>
 </div>
 <hr />
 
 <div class="mt-5">
     <h3>Reviews</h3>
-    <table class="table txt offset-3">
+    <table class="table txt">
         @{
-            for (int i = 1; i <= 3; i++)
+            string reviews = @ViewData["Reviews"].ToString();
+            string review = "";
+            for (int i = 0; i < reviews.Length; i++)
             {
-                <tr>
-                    <td href="#" class="btn btn-outline-dark">User @i</td>
-                    <td class="text-start">Coming Soon...(Review @i)</td>
-                </tr>
+                if (i < reviews.Length - 13)
+                {
+                    if (reviews[i + 13] == ':' && reviews[i + 14] == ' ' && i != 0)
+                    {
+                        <tr>
+                            <td href="#" class="btn btn-outline-dark">User</td>
+                            <td class="text-start">@review</td>
+                        </tr>
+                        review = "";
+                    }
+                }
+                review += reviews[i];
             }
+            <tr>
+                @{
+                    if (!String.IsNullOrEmpty(review))
+                    {
+                        <td href="#" class="btn btn-outline-dark">User</td>
+                        <td class="text-start">@review</td>
+                    }
+                }
+            </tr>
         }
     </table>
 </div>

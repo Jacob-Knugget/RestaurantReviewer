@@ -12,7 +12,7 @@ using RestaurantReviewer.Data;
 namespace RestaurantReviewer.Migrations
 {
     [DbContext(typeof(RestaurantReviewerContext))]
-    [Migration("20241017215405_Initial")]
+    [Migration("20241022191545_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

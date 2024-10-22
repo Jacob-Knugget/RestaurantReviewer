@@ -52,44 +52,47 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Restaurants) {
-        <tr>
-            <td>
-                @{
-                    var img = @item.Name + ".jpg";
-                    <img src="~/images/@img" />
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cost)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Restaurants) {
+            <tr>
+                <td>
+                    @{
+                        if (item.ID <= 5)
+                        {
+                            var img = @item.Name + ".jpg";
+                            <img src="~/images/@img" />
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cost)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 <a asp-page="Create" style="float: right; font-size: 1rem;">Add a New Restaurant</a>
-<div class="text-center" style="clear: both;">
-    <a href="#" class="btn btn-outline-secondary me-5">Prev</a>
-    1
-    <a href="#" class="btn btn-outline-secondary ms-5">Next</a><br />
-</div>
+<ul class="pagination justify-content-center" style="clear: both;">
+    <li class="page-item"><a href="#" class="page-link">Prev</a></li>
+    <li class="page-item active"><a href="#" class="page-link">1</a></li>
+    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+</ul>
 <style>
     body {
         font-family: fantasy;
@@ -110,5 +113,19 @@
     td {
         font-family: Georgia;
         font-size: 1.15rem;
+    }
+    .pagination > li > a {
+        background-color: #F2F0EB;
+        color: grey;
+        border-color: grey;
+    }
+    .pagination > li > a:hover, .pagination > li > a:active, .pagination > li > a:focus {
+        background-color: grey;
+        color: white;
+        border-color: grey;
+    }
+    .pagination > .active > .page-link {
+        background-color: black;
+        border-color: grey;
     }
 </style>

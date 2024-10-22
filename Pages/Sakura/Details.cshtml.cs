@@ -36,6 +36,10 @@ namespace RestaurantReviewer.Pages.Sakura
             else 
             {
                 Restaurants = restaurants;
+                if (String.IsNullOrEmpty(Restaurants.Reviews))
+                    ViewData["Reviews"] = "";
+                else
+                    ViewData["Reviews"] = Restaurants.Reviews;
             }
             return Page();
         }

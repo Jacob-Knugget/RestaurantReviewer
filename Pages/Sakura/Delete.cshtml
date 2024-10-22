@@ -32,6 +32,28 @@
     <dd class="col-lg-10 mb-3">
         @Html.DisplayFor(model => model.Restaurants.Cost)
     </dd>
+    <dt class="col-lg-2">
+        @Html.DisplayNameFor(model => model.Restaurants.Reviews)
+    </dt>
+    <dd class="col-lg-10 mb-3">
+        <p>@{
+            string reviews = @ViewData["Reviews"].ToString();
+            string review = "";
+            for (int i = 0; i < reviews.Length; i++)
+            {
+                if (i < reviews.Length - 13)
+                {
+                    if (reviews[i + 13] == ':' && reviews[i + 14] == ' ' && i != 0)
+                    {
+                            <span class="text-start">@review</span><br />
+                        review = "";
+                    }
+                }
+                review += reviews[i];
+            }
+            <span class="text-start">@review</span>
+        }</p>
+    </dd>
 </dl>
 <form method="post">
     <input type="hidden" asp-for="Restaurants.ID" />

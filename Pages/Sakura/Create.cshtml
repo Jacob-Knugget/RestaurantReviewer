@@ -26,13 +26,19 @@
         </div>
         <div class="form-group mb-4">
             <label asp-for="Restaurants.Description" class="control-label"></label>
-            <textarea asp-for="Restaurants.Description" rows="8" class="form-control" placeholder="Write a description here..." style="font-size: 1em;"></textarea>
+            <textarea asp-for="Restaurants.Description" rows="5" class="form-control" placeholder="Write a description here..." style="font-size: 1em;"></textarea>
             <span asp-validation-for="Restaurants.Description" class="text-danger"></span>
         </div>
-        <div class="form-group mb-5">
+        <div class="form-group mb-4">
             <label asp-for="Restaurants.Cost" class="control-label"></label>
             <input asp-for="Restaurants.Cost" class="form-control" placeholder="$1-$10" style="font-size: 1em;" />
             <span asp-validation-for="Restaurants.Cost" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-5">
+            <label asp-for="Restaurants.Reviews" class="control-label">Review</label>
+            <textarea asp-for="Restaurants.Reviews" rows="5" class="form-control" placeholder="Write a review here...
+Ex) 4 Star Review: Fast and efficient drive through service. Good place to grab something for the road." style="font-size: 1em;"></textarea>
+            <span asp-validation-for="Restaurants.Reviews" class="text-danger"></span>
         </div>
         <div class="form-group">
             <input type="submit" value="Create" class="btn btn-outline-danger" />

@@ -42,18 +42,19 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
+    <div style="background-image: url('Images/background.jpg'); background-size: cover;">
         <div class="container">
-            &copy; 2024 - RestaurantReviewer - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <main role="main" class="pb-3" style="background: palegoldenrod; padding: 25px; border-radius: 25px; opacity: .85;">
+                @RenderBody()
+            </main>
         </div>
-    </footer>
 
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2024 - RestaurantReviewer - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </div>
+        </footer>
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
